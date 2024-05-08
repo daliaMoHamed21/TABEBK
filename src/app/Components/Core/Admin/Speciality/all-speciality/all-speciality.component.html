@@ -1,0 +1,51 @@
+<div class="w-100 mx-auto py-4">
+    <div class="container mt-5 p-5">
+  
+      <div class="card">
+        <p-table
+            [value]="Specialities"
+            [paginator]="true"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[5, 10, 20]">
+            <ng-template pTemplate="header" >
+              <tr style="font-weight: bold;text-align: center; border-bottom: 1px solid #ccc;">
+                <td style="padding: 20px;">#</td>
+                  <td style="padding: 20px;">Name</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-speciality >
+                <tr>
+                  <td style="padding-left: 2rem;">
+                    {{speciality?.id}}
+                  </td>
+                  <td style="padding-left: 2rem;">
+                    {{speciality?.name}}
+                  </td>
+                  <td style="padding-left: 2rem;">
+                    <button class="btn btn-info" [value]="speciality.id" (click)="editSpec(speciality?.id)">Edit</button>
+                  </td>
+                  <td style="padding-left: 3rem;">
+                    <button class="btn btn-danger" [value]="speciality.id" (click)="deleteSpec(speciality.id)">Remove</button>
+                  </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+  
+        </p-table>
+  
+      </div>
+  
+      <!-- Add button to navigate to add speciality page -->
+      <button class="btn btn-success mt-3" routerLink="/speciality/add">Add Speciality</button>
+  
+    </div>
+  </div>
+  

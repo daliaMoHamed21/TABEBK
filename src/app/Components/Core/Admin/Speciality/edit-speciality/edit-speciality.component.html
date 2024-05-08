@@ -1,0 +1,46 @@
+<div class="w-75 mx-auto py-4">
+    <div class="container mt-5 p-5">
+        <div class="card shadow">
+            <div class="card-header">
+                <p class="h2">Edit Patient
+                    <a routerLink="/speciality/allspecialities" class="btn btn-outline-primary float-end">Back</a>
+                </p>
+            </div>
+
+            <div class="card-body">
+                <!-- (ngSubmit)="handleEdit()" -->
+                <form class="m-3 row" [formGroup]="editForm">
+
+                    <!-- ----------------------- Name ----------------------- -->
+                    <div class="mb-3">
+
+                        <label for="name" class="mb-2">Name</label>
+                        <input type="text" formControlName="name" id="name" class="form-control" />
+                        <div *ngIf="editForm.get('name')?.errors && editForm.get('name')?.touched"
+                            class="text-danger m-1 sm">
+                            <p *ngIf="editForm.get('name')?.getError('minlength')" class="m-0">Name minimum lenth is 3
+                            </p>
+                            <p *ngIf="editForm.get('name')?.getError('pattern')" class="m-0">Enter Characters Only</p>
+                            <p *ngIf="editForm.get('name')?.getError('required')" class="m-0">Name is Required</p>
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" (click)="handleEdit()" class="btn btn-outline-success w-25">Edit
+                            patient</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <br>
+
+            <div>
+
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</div>

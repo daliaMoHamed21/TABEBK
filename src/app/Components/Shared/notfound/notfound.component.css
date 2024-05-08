@@ -1,0 +1,13 @@
+.custom-btn {
+    background-color: #43acc2 !important;
+    color: #fff !important;
+    border-color: #43acc2 !important;
+    text-transform:capitalize;
+}
+
+.custom-btn:hover {
+   
+    background-color: #fff !important;
+    color: #43acc2 !important;
+    border-color: #43acc2 !important;
+}

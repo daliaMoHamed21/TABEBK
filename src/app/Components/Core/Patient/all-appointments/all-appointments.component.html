@@ -1,0 +1,85 @@
+<h2 class="headColor fw-bolder text-center">Appointments' Info</h2>
+<div class="container mb-3" *ngFor="let app of appointmentDocs">
+    <div class="row">
+        <section class="appointInfo">
+            <div class="row  py-4 justify-content-around">
+                <div class="col-md-1">
+                    <h3 class="headColor fw-bolder"> Order </h3>
+                    <span class="bg-light">
+                        <p class="Pinfo text-center"> {{app.appointement.order}} </p>
+                    </span>
+                </div>
+                <div class="col-md-3 ">
+                    <h3 class="headColor fw-bolder">Date</h3>
+                    <span class="bg-light">
+                        <p class="Pinfo text-center">{{app.appointement.date | date}}</p>
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="headColor fw-bolder"> Doctor’s Name </h3>
+                    <span class="bg-light">
+                        <p class="Pinfo text-center"> {{app.doctor.name}} </p>
+                    </span>
+
+                </div>
+                <div class="col-md-3 m-2">
+                    <h3 class="headColor fw-bolder"> Status </h3>
+                    <span class="bg-light">
+                        <p class="Pinfo text-center" [ngClass]="{
+              'text-success' : app.appointement.status == 0,
+              'text-danger' : app.appointement.status == 1 || app.appointement.status == 2
+            }">{{app.appointement.status | appstatus}}</p>
+                    </span>
+                </div>
+
+                <div class="button-container text-end " [ngClass]="{
+        'd-none': app.appointement.status != 0,
+      }">
+                    <button [ngClass]="{'d-none': GetDate(app.appointement.date)}" type="button" class="btn btn-primary btn-lg px-3 gap-2 custom-btn me-2"
+                        data-bs-toggle="modal" (click)="SetDocID(app.doctor.id,app.appointement.date)" data-bs-target="#exampleModal"> Rate Doctor</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Rate D Dialog -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Rating your doctor</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="rateForm" (ngSubmit)="submitRating(rateForm)">
+                    <div>
+                        <label for="score" class="my-2 d-block">Rate your doctor:</label>
+                        <p-rating formControlName="score"></p-rating>
+                        <div *ngIf="rateForm.get('score')?.errors && rateForm.get('score')?.touched" class="text-danger m-1 sm">
+                            <p *ngIf="rateForm.get('score')?.getError('required')" class="m-0">Score is Required select one star at least </p>
+                          </div>
+                    </div>
+                    <div>
+                        <label for="" class="mt-3 mb-2">Add Note:</label>
+                        <textarea type="text" class="form-control" formControlName="notes"></textarea>
+                        <div *ngIf="rateForm.get('notes')?.errors && rateForm.get('notes')?.touched" class="text-danger m-1 sm">
+                            <p *ngIf="rateForm.get('notes')?.getError('required')" class="m-0">Note is Required</p>
+                          </div>
+                    </div>
+
+                    <div class="text-end mt-3">
+                        <button type="submit" class="btn btn-send me-auto mt-2 w-25">submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+        </div>
+    </div>
+</div>

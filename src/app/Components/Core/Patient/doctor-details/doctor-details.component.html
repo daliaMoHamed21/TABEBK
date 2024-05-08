@@ -1,0 +1,28 @@
+<div class="container m-5 card row">
+    <div class="text-center">
+        <h1 class="headingDocCard py-4 my-3 fw-bolde">Meet Our Professional Doctors</h1>
+    </div>
+    <div class="col-sm-5 mb-5">
+        <input type="search" [(ngModel)]="searchtext" class="form-control" placeholder="Search">
+    </div>
+    <div class="m-5 row">
+        <div class="card col-lg-6 m-5" style="width: 18rem;" *ngFor="let doc of Doctors|filter:searchtext">
+            <div class="mb-3">
+                <img [src]="'../../../../..'+doc['doctor'].picPath.split('/src')[1]" [alt]="doc.name" class="w-6 imgcontainer shadow-2" />
+            </div>
+            <div class="card-body">
+                <p class="h1 mt-0 mb-3">Dr.{{doc['doctor'].name}}</p>
+
+                <p class="h4 mb-1">Speciality: {{doc['speciality'].name}}</p>
+                <p class="h5 mt-0 mb-3">{{doc['doctor'].description}}</p>
+                <p class="h5 mt-0 mb-3">{{doc['doctor'].governance}}</p>
+                <p-rating class="d-block mb-2" [cancel]="false" [disabled]="true" [ngModel]="doc['reviewAvg']"></p-rating>
+                
+
+                <a [routerLink]="['/doctor' , 'profile' , doc['doctor'].id]" class="btn btn-send ">Show Doctor</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>

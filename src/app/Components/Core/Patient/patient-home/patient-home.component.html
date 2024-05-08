@@ -1,0 +1,71 @@
+<header class="secondHome" [ngStyle]="{'background': 'url(' + backgroundUrl + ') no-repeat 0 0 / cover'}">
+    <div class="container py-3">
+        <div class="row py-5">
+            <div class="col-lg-6">
+                <div class="mt-5">
+                    <p class="h1">Welcome to our website!</p>
+                    <p class="h6">At TABEBK , we're dedicated to simplifying your healthcare experience.</p>
+                    <p class="h6"> Just like Vezeeta, we strive to connect you with trusted healthcare professionals and
+                        facilitate seamless appointments.
+                    </p>
+                    <p class="h6"> Whether you're looking for a doctor's appointment, seeking specialist care, or
+                        scheduling a
+                        check-up, we've got you covered.
+                    </p>
+                    <p class="h6"> Our user-friendly platform is designed to make booking appointments effortless,
+                        saving you
+                        time and hassle. Explore our services today and take the first step towards prioritizing your
+                        health with
+                        ease.
+                    </p>
+                    <p class="h6">At TABEBK , we're dedicated to simplifying your healthcare experience.</p>
+                    <p class="h6"> Just like Vezeeta, we strive to connect you with trusted healthcare professionals and
+                        facilitate seamless appointments.
+                    </p>
+                    <p class="h6"> Whether you're looking for a doctor's appointment, seeking specialist care, or
+                        scheduling a
+                        check-up, we've got you covered.
+                    </p>
+                    <p class="h6"> Our user-friendly platform is designed to make booking appointments effortless,
+                        saving you
+                        time and hassle. Explore our services today and take the first step towards prioritizing your
+                        health with
+                        ease.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="w-100 my-2 py-3 img-home " src="assets/doctor/cuate.png" alt="PicOfHome">
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container card my-5">
+    <div class="text-center">
+        <h1 class="headingDocCard py-4 my-3 fw-bolde">Meet Our Professional Doctors</h1>
+    </div>
+    <p-carousel [value]="Doctors" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+        <ng-template let-doc pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                <div class="mb-3">
+                    <img [src]="'../../../../..'+doc['doctor'].picPath.split('/src')[1]" [alt]="doc.name" class="w-6 imgcontainer shadow-2" />
+                </div>
+                <div>
+                    <p class="h1 mt-0 mb-3">Dr.{{doc['doctor'].name}}</p>
+
+                    <p class="h4 mb-1">Speciality: {{doc['speciality'].name}}</p>
+                    <p class="h5 mt-0 mb-3">{{doc['doctor'].description}}</p>
+                    <p class="h5 mt-0 mb-3">{{doc['doctor'].governance}}</p>
+                    <p-rating class="d-block mb-2" [cancel]="false" [disabled]="true" [ngModel]="doc['reviewAvg']"></p-rating>
+                
+                    <a [routerLink]="['/doctor' , 'profile' , doc['doctor'].id]" class="btn btn-send ">Show Doctor</a>
+
+                    <div class="mt-5 flex align-items-center justify-content-center gap-2">
+
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

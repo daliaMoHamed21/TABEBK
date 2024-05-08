@@ -1,0 +1,57 @@
+.custom-btn {
+  background-color: #1A998E;
+  color: #fff !important;
+  border-color: #1A998E;
+  text-transform: capitalize;
+}
+
+.custom-btn:hover {
+  background-color: #fff;
+  color: #1A998E !important;
+  border-color: #1A998E;
+}
+
+.headColor{
+  color: #1A998E;
+}
+.Pinfo{
+  color:#000000;
+  font-weight: 600;
+  font-size: 1.6rem;
+  max-width: 80%;
+  line-height: 3.5rem;
+  border-radius: 10px;
+  margin: 3px;
+  background: rgba(230, 240, 237, 1);
+}
+.toggle-btn{
+  font-size: 30px;
+  width: 10%;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #C7C7C7;
+  color: #37474F;
+}
+.noteInfo{
+  background:rgba(230, 240, 237, 1) ;
+  height: 14rem;
+  border-radius:25px ;
+}
+.appointInfo{
+  border: #1A998E 2px solid;
+  border-radius: 20px;
+}
+
+.user-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-rating img{
+    margin-right: 2px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}

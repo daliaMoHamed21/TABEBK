@@ -1,0 +1,69 @@
+<header
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+    style="padding-left: 20px; padding-right: 20px;">
+    <div class="col-md-3 mb-2 mb-md-0">
+        <a href="#" class="navbar-brand">
+            <img src="assets/logo.png" class="logo-img" alt="Logo">
+        </a>
+    </div>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a *ngIf="authService.returnRole() == ''" routerLink="/home" routerLinkActive="active"
+                class="nav-link px-2">Home</a></li>
+
+        <li><a *ngIf="authService.returnRole() == 'admin'" routerLink="/doctor/alldoctors" routerLinkActive="active"
+                class="nav-link px-2">All Doctors</a></li>
+        <li><a *ngIf="authService.returnRole() == 'admin'" routerLink="/patient/allpatients" routerLinkActive="active"
+                class="nav-link px-2">All Patients</a></li>
+        <li><a *ngIf="authService.returnRole() == 'admin'" routerLink="/speciality/allspecialities"
+                routerLinkActive="active" class="nav-link px-2">All Specialities</a></li>
+
+        <li><a *ngIf="authService.returnRole() == 'doctor'" routerLink="/doctor/home" routerLinkActive="active"
+                class="nav-link px-2">Home</a></li>
+        <li><a *ngIf="authService.returnRole() == 'doctor'" routerLink="/doctor/profile" routerLinkActive="active"
+                class="nav-link px-2">Doctor Profile</a></li>
+        <li><a *ngIf="authService.returnRole() == 'doctor'" routerLink="/doctor/appointments" routerLinkActive="active"
+                class="nav-link px-2">Appointments</a></li>
+        <li><a *ngIf="authService.returnRole() == 'doctor'" routerLink="/doctor/appointment/req"
+                routerLinkActive="active" class="nav-link px-2">Requested Appointment</a></li>
+
+        <li><a *ngIf="authService.returnRole() == 'patient'" routerLink="/patient/home" routerLinkActive="active"
+                class="nav-link px-2">Home</a></li>
+        <li><a *ngIf="authService.returnRole() == 'patient'" routerLink="/patient/profile" routerLinkActive="active"
+                class="nav-link px-2">Patient Profile</a></li>
+        <li><a *ngIf="authService.returnRole() == 'patient'" routerLink="/patient/appointment" routerLinkActive="active"
+                class="nav-link px-2">Patient Appointment</a></li>
+        <li><a *ngIf="authService.returnRole() == 'patient'" routerLink="/patient/docdetails" routerLinkActive="active"
+                class="nav-link px-2">All Doctors</a></li>
+
+        <li><a routerLink="/contact" routerLinkActive="active" class="nav-link px-2">Contact US</a></li>
+
+
+    </ul>
+
+
+    <div class="col-md-3 text-end">
+        <button *ngIf="authService.returnRole() == ''" type="button" class="btn btn-outline-success me-2"
+            routerLink="/signin">Sign-in</button>
+        <button *ngIf="authService.returnRole() == ''" type="button" class="btn btn-success me-2"
+            routerLink="/doctor/signup">Doctor Sign-up</button>
+        <button *ngIf="authService.returnRole() == ''" type="button" class="btn btn-primary"
+            routerLink="/patient/signup">Patient Sign-up</button>
+    </div>
+
+    <div class="d-flex">
+        <button *ngIf="authService.returnRole() != ''" routerLink="/changepass" routerLinkActive="active"
+            class="nav-link px-2">
+            Settings
+            <i style="font-size:24px" class="fa">&#xf013;</i>
+        </button>
+    </div>
+
+    <div>
+        <button *ngIf="authService.returnRole() != ''" type="button" (click)="Logout()" class="btn btn-danger">
+            Log Out
+            <i class='far fa-arrow-alt-circle-right'></i>
+        </button>
+
+    </div>
+</header>

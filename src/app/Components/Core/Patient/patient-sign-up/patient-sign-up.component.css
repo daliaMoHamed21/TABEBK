@@ -1,0 +1,24 @@
+
+
+.centered-content {
+  text-align: center;
+}
+
+.form-group {
+margin-bottom: 10px;
+}
+
+.image-section img {
+max-width: 100%;
+height: auto;
+margin-left: 50px;
+} 
+
+.txt2 {
+  color: #6CC2ED;
+  transition: color 0.3s;
+}
+
+.txt2:hover {
+  color: #8a8f90;
+}

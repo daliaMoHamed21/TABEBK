@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+  <div class="col-md-8"> <!-- Adjust the column width as needed -->
+    <div class="PaymentContainer p-5"> <!-- Added padding -->
+      <h3 class="display-5 fw-bold text-center mb-4"> <!-- Added margin bottom -->
+        <span style="color: #43acc2;">Payment </span>
+        <span style="color: #8a8f90;">Form </span>
+      </h3>
+      <form [formGroup]="paymentForm" (ngSubmit)="processPayment()">
+
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" formControlName="cardNumber" (input)="limitCardNumLength($event)" class="form-control" [ngClass]="{
+                               'is-valid': paymentForm.get('cardNumber')?.valid && paymentForm.get('cardNumber')?.touched,
+                               'is-invalid': (paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched) || (paymentForm.get('cardNumber')?.errors && paymentForm.get('cardNumber')?.dirty)
+                             }">
+          <div class="valid-feedback">Card number looks good!</div>
+          <div class="invalid-feedback">
+            Card number is required and must be a valid 16-digit number
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" formControlName="expiryDate" class="form-control" [ngClass]="{
+                               'is-valid': paymentForm.get('expiryDate')?.valid && paymentForm.get('expiryDate')?.touched,
+                               'is-invalid': (paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched) || (paymentForm.get('expiryDate')?.errors && paymentForm.get('expiryDate')?.dirty)
+                             }" placeholder="MM/YY">
+          <div class="valid-feedback">Expiry date looks good!</div>
+          <div class="invalid-feedback">
+            Expiry date is required and must be in MM/YY format
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" formControlName="cvv" (input)="limitCvvNumLength($event)" class="form-control" [ngClass]="{
+                               'is-valid': paymentForm.get('cvv')?.valid && paymentForm.get('cvv')?.touched,
+                               'is-invalid': (paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched) || (paymentForm.get('cvv')?.errors && paymentForm.get('cvv')?.dirty)
+                             }">
+          <div class="valid-feedback">CVV looks good!</div>
+          <div class="invalid-feedback">
+            CVV is required and must be a valid 3 or 4-digit number
+          </div>
+        </div>
+        <button routerLink="/patient/patientprofial/paymentdetails" type="submit" [disabled]="paymentForm.invalid"
+          class="btn btn-outline-info" style="background-color: #6CC2ED; border-color: #6CC2ED; color: #fff;">Submit
+          Payment</button>
+      </form>
+    </div>
+
+
+
+    <div class="col-md-1"></div>

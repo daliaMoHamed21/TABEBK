@@ -1,0 +1,123 @@
+.btn-custom-primary {
+    background-color: #1A998E!important;
+    color: #fff !important;
+    border-color: #1A998E!important;
+    text-transform:capitalize;
+  }
+
+.btn-custom-primary:hover {
+
+    background-color: #fff !important;
+    color: #1A998E!important;
+    border-color: #1A998E!important;
+  }
+  .text-test{
+    columns: #1A998E;
+  }
+
+.headingDocCard{
+  color: #1A998E;
+
+}
+
+
+.signup-btn{
+    margin-right:120px;
+    width: 228px;
+    background: #1A998E;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
+    border-radius: 15px;
+    font-size: 24px;
+    font-style: bolder;
+    color: #FFFFFF;
+  }
+  .heading-home
+  {
+    color: #1A998E;
+  }
+  .loginbtn {
+    margin-right: 120px;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
+    border-radius: 15px;
+    font-size: 24px;
+    font-style: bolder;
+    color: #1A998E;
+    background: #FFFFFF;
+  
+  }
+  
+  .loginbtn:hover {
+    color: #000;
+    background: rgba(218, 255, 252, 1);
+  }
+  .secondHome{
+    padding-bottom: 13rem;
+  }
+  .appointReq{
+  background: rgba(239, 241, 239, 1);
+  padding: 2rem 2rem;
+  }
+  
+  .custom-btn {
+    background-color: #1A998E;
+    color: #fff !important;
+    border-color: #1A998E;
+    text-transform: capitalize;
+  }
+  
+  .custom-btn:hover {
+    background-color: #fff;
+    color: #1A998E!important;
+    border-color: #1A998E;
+  }
+  
+  .headColor{
+    color: #1A998E;
+  }
+  .Pinfo{
+    color:#000000;
+    font-weight: 600;
+    font-size: 1.6rem;
+    max-width: 80%;
+    line-height: 3.5rem;
+    border-radius: 10px;
+    margin: 3px;
+    background: rgba(230, 240, 237, 1);
+  }
+  .toggle-btn{
+    font-size: 30px;
+    width: 10%;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #C7C7C7;
+    color: #37474F;
+  }
+  .noteInfo{
+    background:rgba(230, 240, 237, 1) ;
+    height: 14rem;
+    border-radius:25px ;
+  }
+  .appointInfo{
+    border: #1A998E 2px solid;
+    border-radius: 20px;
+  }
+  
+  
+  header{
+    background-image:linear-gradient(8.73deg, rgba(90, 146, 157, 1) -23.43%, rgba(167, 241, 255, 0.53465) 44.13%, rgba(245, 245, 245, 0) 92.7%);
+  }
+  .ourDoctor{
+    border-radius: 5%;
+    margin-top: 50px;
+    background-color: rgba(238, 254, 242, 1);
+  }
+  .scanDicribe{
+    border-radius: 5%;
+    margin-top: 150px;
+    background-color: rgba(255, 240, 254, 1);
+  }
+

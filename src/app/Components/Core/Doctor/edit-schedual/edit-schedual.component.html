@@ -1,0 +1,160 @@
+<div class="container mt-5 p-5">
+    <div class="card shadow">
+        <div class="card-body">
+            <p class="h2 text-center" style="text-transform:capitalize;">Edit Schedule</p>
+            <form [formGroup]="editSchedualForm" (ngSubmit)="handleEdit()" class="w-75 mx-auto">
+
+                <!-- Saturday -->
+                <div class="mb-3">
+                    <label for="saturday" class="mb-2">Saturday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="saturday-start" formControlName="saturdayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('saturdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('saturdayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="saturday-end" formControlName="saturdayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('saturdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('saturdayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text ">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="saturdayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sunday -->
+                <div class="mb-3">
+                    <label for="sunday" class="mb-2">Sunday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="sunday-start" formControlName="sundayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('sundayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('sundayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="sunday-end" formControlName="sundayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('sundayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('sundayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="sundayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monday -->
+                <div class="mb-3">
+                    <label for="monday" class="mb-2">Monday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="monday-start" formControlName="mondayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('mondayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('mondayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="monday-end" formControlName="mondayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('mondayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('mondayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="mondayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="mb-3">
+                    <label for="tuesday" class="mb-2">Tuesday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="tuesday-start" formControlName="tuesdayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('tuesdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('tuesdayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="tuesday-end" formControlName="tuesdayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('tuesdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('tuesdayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="tuesdayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wednesday -->
+                <div class="mb-3">
+                    <label for="wednesday" class="mb-2">Wednesday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="wednesday-start" formControlName="wednesdayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('wednesdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('wednesdayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="wednesday-end" formControlName="wednesdayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('wednesdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('wednesdayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="wednesdayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="mb-3">
+                    <label for="thursday" class="mb-2">Thursday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="thursday-start" formControlName="thursdayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('thursdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('thursdayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="thursday-end" formControlName="thursdayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('thursdayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('thursdayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="thursdayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Friday -->
+                <div class="mb-3">
+                    <label for="friday" class="mb-2">Friday</label>
+                    <div class="input-group">
+                        <!-- Start Time -->
+                        <input type="time" id="friday-start" formControlName="fridayStart" class="form-control"
+                            [readonly]="editSchedualForm.get('fridayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('fridayDisabled')?.value">
+                        <!-- End Time -->
+                        <span class="input-group-text">to</span>
+                        <input type="time" id="friday-end" formControlName="fridayEnd" class="form-control"
+                            [readonly]="editSchedualForm.get('fridayDisabled')?.value"
+                            [disabled]="editSchedualForm.get('fridayDisabled')?.value">
+                        <!-- Checkbox for disabling -->
+                        <div class="input-group-text">
+                            Break ?
+                            <input class="ms-2" type="checkbox" formControlName="fridayDisabled">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-send">Edit Schedule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

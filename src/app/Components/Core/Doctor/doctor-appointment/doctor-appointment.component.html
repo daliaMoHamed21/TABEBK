@@ -1,0 +1,212 @@
+<div class="container">
+   <div class="row my-4 justify-content-center">
+
+      <div class="col-12  text-center">
+         <p class="doctorJob h1 fw-bolder text-center">Profile</p>
+      </div>
+      <div class="imgcontainer ">
+         <button (click)="deletePicture()"
+            *ngIf="role == 'doctor' && docProfileData.doctor.picPath.split('profilepic/')[1] != 'defaultDoc.png'"
+            class="btn btn-danger deleteBtn"><i class="bi bi-trash"></i></button>
+         <img class="mx-auto d-block profilePic col-12"
+            [src]="'../../../../..'+docProfileData.doctor.picPath.split('/src')[1]" alt="Doctor's Profile Picture">
+         <button (click)="uploadEvent()" *ngIf="role == 'doctor'" class="btn btn-success uploadBtn"><i
+               class="bi bi-upload"></i></button>
+         <input (input)="uploadPicture($event)" class="d-none" type="file" #file>
+
+      </div>
+   </div>
+   <div class="row  ">
+      <div class="col-md-6 ">
+         <h4 class="headColor fw-bolder"> Name </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center"> {{docProfileData.doctor.name}} </p>
+         </span>
+      </div>
+      <div class="col-md-6">
+         <h4 class="headColor fw-bolder"> Specialties </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center"> {{docProfileData.speciality.name}} </p>
+         </span>
+      </div>
+      <div class="col-md-6 ">
+         <h4 class="headColor fw-bolder"> E-mail </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center">{{docProfileData.doctor.email}}</p>
+         </span>
+      </div>
+      <div class="col-md-6">
+         <h4 class="headColor fw-bolder"> Governance </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center">{{docProfileData.doctor.governance}}</p>
+         </span>
+      </div>
+      <div class="col-md-6">
+         <h4 class="headColor fw-bolder"> Phone Number </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center">{{docProfileData.doctor.phone}}</p>
+         </span>
+      </div>
+      <div class="col-md-6">
+         <h4 class="headColor fw-bolder"> Address </h4>
+         <span class="bg-light">
+            <p class="Pinfo text-center">{{docProfileData.doctor.address}}</p>
+         </span>
+      </div>
+      <ng-container *ngIf="role == 'doctor'">
+         <div class="col-md-6">
+            <h4 class="headColor fw-bolder"> Date of Birth </h4>
+            <span class="bg-light">
+               <p class="Pinfo text-center">{{docProfileData.doctor.dob | date}}</p>
+            </span>
+         </div>
+         <div class="col-md-6">
+            <h4 class="headColor fw-bolder"> National ID </h4>
+            <span class="bg-light">
+               <p class="Pinfo text-center">{{docProfileData.doctor.nationalID}}</p>
+            </span>
+         </div>
+         <!-- <div class="col-md-6">
+              <h4 class="headColor fw-bolder"> Appointment Price</h4>
+              <span class="bg-light">
+                <p class="Pinfo text-center">{{docProfileData.doctor.appointmentPrice}}</p>
+              </span>
+            </div> -->
+      </ng-container>
+      <div *ngIf="role == 'doctor'" class="col-12 text-center mt-5 mb-4">
+         <a name="editProfile" id="editProBtn" (click)="navDoc(docProfileData.doctor.id)" class="btn w-50"
+            role="button"> Edit Profile</a>
+      </div>
+   </div>
+
+</div>
+
+<div class="card mt-5 container" style="position: relative;">
+   <button (click)="uploadCertEvent()" *ngIf="role == 'doctor'" class="btn btn-success uploadCert"><i
+         class="bi bi-upload"></i></button>
+
+
+   <p-carousel [value]="docProfileData.certificates" [numVisible]="3" [numScroll]="3" [circular]="false"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template pTemplate="header">
+         <p class="h2 text-center my-4">Certificates</p>
+         <input (input)="uploadCert($event)" class="d-none" type="file" #certAdd>
+      </ng-template>
+      <ng-template let-cert pTemplate="item">
+         <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3 certContain">
+               <button (click)="setCertID(cert.id)" data-bs-toggle="modal" #resultBtn data-bs-target="#DeleteCertModal" *ngIf="role == 'doctor'" class="btn btn-danger deleteCert"><i
+                     class="bi bi-trash"></i></button>
+               <img [src]="'../../../../..'+cert.path.split('/src')[1]" class="w-6 shadow-2 cert" />
+            </div>
+         </div>
+      </ng-template>
+   </p-carousel>
+</div>
+<div class="card my-5 container">
+   <div class="text-center">
+      <p class="headingDocCard h2 my-4 fw-bolde">Reviews</p>
+   </div>
+   <p-carousel [value]="docProfileData.reviews" [numVisible]="3" [numScroll]="3" [circular]="false"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template let-rev pTemplate="item">
+         <div class=" card border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div>
+               <p class="h3 mt-0 mb-3">{{rev.patient.gender == 0 ? "Mr." : rev.patient.gender == 1 ? "Mrs." :
+                  ""}}{{rev.patient.name}} <sub>says</sub></p>
+
+               <p class="h4 mb-1">{{rev.review.notes}}</p>
+               <p-rating [cancel]="false" [disabled]="true" [ngModel]="rev.review.score"></p-rating>
+               <p class="h5 mt-0 mb-3">{{rev.review.date | date}}</p>
+            </div>
+         </div>
+      </ng-template>
+   </p-carousel>
+</div>
+
+<div class="container">
+   <div class="row">
+      <div class="text-center">
+         <p class="av-appoint py-5 h4"><i class="fa fa-calendar  "></i> Available appointments</p>
+
+      </div>
+      <div class="row schedual">
+         <button *ngIf="role == 'doctor'" [routerLink]="['/doctor/schedual/edit', id ]" class="book-btn m-3 p-3"
+            type="button"> Edit Schedule </button>
+         <button class="appointmentPrice  m-3 p-3" type="button" disabled>{{docProfileData.doctor.appointmentPrice}}
+            EGP</button>
+         <div *ngFor="let days of dates" class="col-md-6 col-sm-12 col-lg-3 day">
+            <div class="book-card text-center py-2 m-3">
+               <h3 class="card-head h5"> <i class="fa-solid fa-calendar-days me-2  "></i>{{days?.day}}</h3>
+               <h4 class="p-3 h5"><i class="fa-solid fa-clock ">{{days!.date.toDateString()}}</i> </h4>
+               <h4 class="p-3 h5"><i class="fa-solid fa-clock "
+                     [ngClass]="{'text-danger': days?.time == '0'}">{{days?.time
+                     == "0" ? "Not Avaliable" : days?.time}}</i> </h4>
+               <!-- <p class=" text-primary h2">{{docProfileData.doctor.appointmentPrice}} EGP</p> -->
+               <!-- <p class="text-center fs-4 text-danger">Already Booked</p> -->
+               <button *ngIf="(role == 'patient' || role == '') && days?.time != '0'" data-bs-toggle="modal" data-bs-target="#BookModal" class="book2-btn  m-3 p-3"
+                  type="button" (click)="role == 'patient' ? setBookDay(days?.date?.getDay()) : redirectToSignIn()"
+                  [disabled]="days?.time == '0'"> Book </button>
+               <!-- <button *ngIf="role == 'doctor'" [routerLink]="['/doctor','schedual','edit',':id']" class="book-btn  m-3 p-3" type="button"> Edit </button> -->
+            </div>
+         </div>
+      </div>
+
+
+      <div class="modal fade" id="BookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h2 class="modal-title fs-5" id="exampleModalLabel">Book An Appointment ?</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                Are you sure you want to book an appointment at {{bookDate}} ?
+               </div>
+               <div class="modal-footer">
+                  <a type="button" class="btn btn-success" (click)="bookApp(bookDay)">Yes</a>
+                  <a type="button" #closeBtn class="btn btn-danger" data-bs-dismiss="modal">No</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <button data-bs-toggle="modal" #resultBtn data-bs-target="#ResultModal" class="d-none"></button>
+
+   <div class="modal fade" id="ResultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h2 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h2>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           {{modalBody}}
+          </div>
+          <div class="modal-footer">
+             <a type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</a>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+<div class="modal fade" id="DeleteCertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h2 class="modal-title fs-5 text-danger" id="exampleModalLabel">Warning!</h2>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           Are you sure you want to delete this Certificate ?
+          </div>
+          <div class="modal-footer">
+             <a type="button" class="btn btn-success" (click)="deleteCert(CertID!)">Yes</a>
+             <a type="button" #closeCertBtn class="btn btn-danger" data-bs-dismiss="modal">No</a>
+          </div>
+       </div>
+    </div>
+ </div>
+

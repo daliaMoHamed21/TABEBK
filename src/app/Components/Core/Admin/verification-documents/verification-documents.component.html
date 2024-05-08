@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-12 mb-5">
+            <h1>National ID</h1>
+            <div class="imgcontainer">
+                <img [src]="nidDoc ? '../../../../..'+nidDoc.path.split('/src')[1] : ''" alt="" class="imgcontainer"
+                    [ngClass]="{
+                    'd-none': !nid,
+                }">
+            </div>
+
+        </div>
+        <div class="col-md-6 col-12">
+            <h1>Certificate</h1>
+            <div class="imgcontainer">
+                <img [src]="certificates[0] ? '../../../../..'+certificates[0].path.split('/src')[1] : ''" alt=""
+                    class="imgcontainer" [ngClass]="{
+                    'd-none': !cert,
+                }">
+            </div>
+        </div>
+    </div>
+</div>

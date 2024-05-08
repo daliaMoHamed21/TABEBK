@@ -1,0 +1,62 @@
+.logo-img {
+    width: 80px; 
+    height: auto; 
+  }
+  .nav-link {
+    color: #1A998E ;
+  }
+
+  .nav-link.active {
+    color: #8a8f90; 
+    font-weight: bold; 
+  }
+
+  /* Style for Patient button */
+.btn-outline-primary {
+  color: #1A998E !important;
+  border-color: #1A998E !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1A998E !important;
+  color: #fff !important;
+}
+
+.btn-primary {
+  background-color: #1A998E !important;
+  color: #fff !important;
+  border-color: #1A998E !important;
+  
+}
+
+.btn-primary:hover {
+
+  background-color: #fff !important;
+  color: #1A998E!important;
+  border-color: #1A998E!important;
+}
+
+ /* Style for Doctors button */
+.btn-outline-success {
+  color: #d8876b !important;
+  border-color: #d8876b !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #d8876b !important;
+  color: #fff !important;
+}
+
+.btn-success {
+  background-color: #d8876b !important;
+  color: #fff !important;
+  border-color: #d8876b !important;
+  
+}
+
+.btn-success:hover {
+
+  background-color: #fff !important;
+  color: #d8876b !important;
+  border-color: #d8876b !important;
+}

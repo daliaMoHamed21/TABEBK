@@ -1,0 +1,60 @@
+<section class="mb-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <!-- Default form contact -->
+                <form [formGroup]="contactForm" class="text-center border border-light p-5" (ngSubmit)="onSubmit()">
+                    <p class="h4 mb-4">Contact us</p>
+                    <!-- Name -->
+                    <div class="Name">
+                        <input 
+                            type="text" formControlName="from_name" class="form-control mb-4" placeholder="Name" id="validationCustom01" required 
+                            [ngClass]="{
+                                'is-valid': nameConttrol.valid,
+                                'is-invalid': (nameConttrol.errors && (nameConttrol.touched || (nameConttrol.value && nameConttrol.value.includes(' ')))) || (nameConttrol.errors && nameConttrol.errors['pattern']) || (isSubmitted && !nameConttrol.valid)
+                            }"/>
+                                           
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                            <span *ngIf="nameConttrol.errors?.['required']">Name is required and must be greater than 3 letters</span>
+                            <span *ngIf="nameConttrol.errors?.['pattern']">Name must contain only letters and spaces</span>
+                        </div>
+                    </div>
+                   
+          
+                    <!-- Email -->
+                    <div class="Email">
+                        <input
+                        type="email"  formControlName="from_email" class="form-control mb-4" placeholder="Email" id="validationCustom02" required 
+                        [ngClass]="{
+                          'is-valid': emailConttrol.valid,
+                          'is-invalid': (emailConttrol.errors && (emailConttrol.touched || (emailConttrol.value && emailConttrol.value.includes(' ')))) ||(isSubmitted && !emailConttrol.valid)
+                        }"/>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">E-mail is required and must be a valid email address</div>
+                       
+                    </div>
+                    <!-- Message -->
+                    
+                    <div class="Message">
+                        <textarea formControlName="message" class="form-control rounded-0 mb-4" rows="3" placeholder="Message" id="validationCustom03" required 
+                        [ngClass]="{
+                          'is-valid': messageConttrol.valid,
+                          'is-invalid': (messageConttrol.errors && (messageConttrol.touched || (messageConttrol.value && messageConttrol.value.includes(' '))))||(isSubmitted && !nameConttrol.valid)
+                        }"></textarea>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Message is required and must be greater than 7 letters </div>
+                
+                    </div>
+
+                    <!-- {{contactForm.value | json}} -->
+                    
+                   
+                    <!-- Send button -->
+                    <button class="btn btn-info btn-send mt-3" type="submit" style="width: 100px;">Send</button> <!-- Added mt-3 for margin top -->
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</section>

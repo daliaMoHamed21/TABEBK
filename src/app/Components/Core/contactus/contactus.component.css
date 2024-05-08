@@ -1,0 +1,12 @@
+.btn-send {
+    background-color: #1A998E !important;
+    color: #fff !important;
+    border-color: #1A998E !important;
+    
+  }
+  
+  .btn-send:hover {
+    background-color: #fff !important;
+    color: #1A998E !important;
+    border-color: #1A998E !important;
+  }

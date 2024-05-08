@@ -1,0 +1,83 @@
+<div class="w-100 mx-auto py-4">
+  <div class="container mt-5 p-5">
+
+    <div class="card">
+      
+        <p-table
+        #dt1
+        [value]="patients"
+        dataKey="id"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5, 10, 20]"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name' , 'phone']"
+        >
+        
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal(($any($event.target).value), 'contains')" placeholder="Search keyword" />
+                   </span>
+            </div>
+        </ng-template>
+
+          <ng-template pTemplate="header" >
+            <tr style="font-weight: bold;text-align: center; border-bottom: 1px solid #ccc;">
+              <td style="padding: 20px;">#</td>
+                <td style="padding: 20px;">Name</td>
+                <td style="padding: 20px;">Email</td>
+                <td style="padding: 20px;">Phone</td>
+                <td style="padding: 20px;">Date of Birth</td>
+                <td style="padding: 20px;">Gender</td>
+                <td style="padding: 20px;">Edit</td>
+                <td style="padding: 20px;">Remove</td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-pat >
+              <tr>
+                <td style="padding-left: 2rem;">
+                  {{pat?.id}}
+                </td>
+                <td style="padding-left: 2rem;">
+                  {{pat?.name}}
+                </td>
+                <td style="padding-left: 2rem;">
+                  {{pat?.email}}
+                </td>
+                <td style="padding-left: 2rem;">
+                  {{pat?.phone}}
+                </td>
+                <td style="padding-left: 2rem;">
+                  {{pat?.dob |date:'longDate'}}
+                </td>
+                <td style="padding-left: 2.5rem;">
+                  {{pat?.gender | gender}}
+                </td>
+                <td style="padding-left: 2rem;">
+                  <button class="btn btn-info" [value]="pat.id" (click)="navDoc(pat?.id)">Edit</button>
+                </td>
+                <td style="padding-left: 3rem;">
+                  <button class="btn btn-danger" [value]="pat.id" (click)="deletePat(pat.id)">Remove</button>
+                </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="paginatorleft">
+              <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+          </ng-template>
+          <ng-template pTemplate="paginatorright">
+              <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+          </ng-template>
+
+      </p-table>
+
+    </div>
+
+    <!-- Add button to navigate to add patient page -->
+    <button class="btn btn-success mt-3" routerLink="/patient/add">Add Patient</button>
+
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="w-100 mx-auto py-4">
+    <div class="container mt-5 p-5">
+
+        <div class="card">
+
+
+             <p-table
+             #dt1
+             [value]="Doctors"
+             dataKey="id"
+             [rows]="5"
+             [tableStyle]="{ 'min-width': '50rem' }"
+             [showCurrentPageReport]="true"
+             [rowsPerPageOptions]="[5, 10, 20]"
+             [paginator]="true"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             [globalFilterFields]="['doctor.name', 'speciality.name', 'doctor.governance', 'doctor.status']"
+             >
+             
+             <ng-template pTemplate="caption">
+                 <div class="flex">
+                     <span class="p-input-icon-left ml-auto">
+                         <i class="pi pi-search"></i>
+                         <input pInputText type="text" (input)="dt1.filterGlobal(($any($event.target).value), 'contains')" placeholder="Search keyword" />
+                        </span>
+                 </div>
+             </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr
+                        style="font-weight: bold; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #ccc;">
+                        <td class="tdHeader">#</td>
+                        <td class="tdHeader">Name</td>
+                        <td class="tdHeader">Email</td>
+                        <td class="tdHeader">Specialty</td>
+                        <td class="tdHeader">Gender</td>
+                        <td class="tdHeader">National ID</td>
+                        <td class="tdHeader">Governorate</td>
+                        <td class="tdHeader">Address</td>
+                        <td class="tdHeader">Status</td>
+                        <td class="tdHeader">Edit</td>
+                        <td class="tdHeader">Delete</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-doc>
+                    <tr>
+                        <td style="padding-left: 1rem;">
+                            {{doc.doctor?.id}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.name}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.email}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.speciality?.name}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.gender | gender}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.nationalID}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.governance}}
+                        </td>
+                        <td style="padding-left: 2rem;">
+                            {{doc.doctor?.address}}
+                        </td>
+                        <td style="padding-left: 2rem;"
+                            [ngClass]="{'text-success' : doc.doctor.status == 0, 'text-warning':doc.doctor.status == 1 , 'text-danger': doc.doctor.status == 2 || doc.doctor.status == 3}">
+                            {{doc.doctor.status | accountStatus}}
+                        </td>
+                        <td style="padding-left: 1rem;">
+                            <button class="btn btn-info" #docId [value]="doc.doctor.id"
+                                (click)="navDoc(doc.doctor.id)">Edit</button>
+                        </td>
+                        <td style="padding-left: 1rem;">
+                            <button class="btn btn-danger" [value]="doc.doctor.id"
+                                (click)="deleteDoc(doc.doctor.id)">Remove</button>
+                        </td>
+                        <!-- [ngClass]="{'d-none':doc.doctor.status != 1}" -->
+                        <td>
+                            <button class="btn btn-primary mb-2 col-12"
+                                [routerLink]="['/doctor','verify',doc.doctor.id]">Verfication Documents</button>
+                            <button class="btn btn-success mb-2 col-12" [ngClass]="{'d-none':doc.doctor.status == 0}"
+                                (click)="ActivateAccount(doc.doctor.id)">Activate</button>
+                            <button class="btn btn-danger mb-2 col-12" [ngClass]="{'d-none':doc.doctor.status != 1}"
+                                (click)="RejectAccount(doc.doctor.id)">Reject</button>
+                            <button class="btn btn-danger mb-2 col-12" [ngClass]="{'d-none':doc.doctor.status == 2}"
+                                (click)="BanAccount(doc.doctor.id)">Ban</button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+
+        </div>
+
+        <button class="btn btn-success mt-3" routerLink="/doctor/add">Add Doctor</button>
+
+
+    </div>
+</div>

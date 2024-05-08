@@ -1,0 +1,112 @@
+<!-- <header class="secondHome" [ngStyle]="{'background': 'url(' + backgroundUrl + ') no-repeat 0 0 / cover'}">
+  <div class="container py-3">
+    <div class="row py-5">
+      <div class="col-md-6 py-5" id="top">
+        <div class="home-intro">
+          <h1 class="py-2 m-3 display-3 fw-bolder heading-home">Welcome Doctor</h1>
+          <p class="blockquote py-2 m-3 fw-bold fs-2">Request and manage appointments.</p>
+        </div>
+        <div class="home-btn py-4">
+          <a class="btn loginbtn p-2 fw-bolder" ref="#appoints">Request and  Manage Appointments</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img class="w-100 my-2 py-3 img-home " src="assets/doctor/cuate.png" alt="PicOfHome">
+      </div>
+    </div>
+  </div>
+</header> -->
+
+
+<section id="appoints">
+    <!-- start secondHome -->
+    <div class="container">
+        <div class="row py-5 my-3">
+            <div class="row py-2 my-3">
+                <div class="text-center">
+                    <h1 class="headingDocCard py-2 my-3 fw-bolder heading-home"> Appointment’s Requests </h1>
+                </div>
+                <div>
+                    <mat-progress-spinner class="m-auto" mode="indeterminate" *ngIf="IsWait">
+                    </mat-progress-spinner>
+                </div>
+
+                <div class="container mb-3" *ngFor="let app of comingAppoint">
+                    <div class="row">
+                        <section class="appointInfo">
+                            <div class="row  py-4 justify-content-around">
+                                <div class="col-md-1">
+                                    <h3 class="headColor fw-bolder"> Order </h3>
+                                    <span class="bg-light">
+                                        <p class="Pinfo text-center"> {{app.appointement.order}} </p>
+                                    </span>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <h3 class="headColor fw-bolder">Date</h3>
+                                    <span class="bg-light">
+                                        <p class="Pinfo text-center">{{app.appointement.date | date}}</p>
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <h3 class="headColor fw-bolder"> Patient’s Name </h3>
+                                    <span class="bg-light">
+                                        <p class="Pinfo text-center"> {{app.patient.name}} </p>
+                                    </span>
+
+                                </div>
+                                <div class="col-md-3 m-2">
+                                    <h3 class="headColor fw-bolder"> Status </h3>
+                                    <span class="bg-light">
+                                        <p class="Pinfo text-center" [ngClass]="{
+                            'text-success' : app.appointement.status == 0,
+                            'text-danger' : app.appointement.status == 1 || app.appointement.status == 2
+                          }">{{app.appointement.status | appstatus}}</p>
+                                        <!-- <ng-container>
+                        <button #rej (click)="acceptAppoint(rej.value)" type="submit" [value]="app.appointement.id"
+                          class="btn btn-success">Confirm</button>
+                        <button type="submit" #acc (click)="cancelAppoint(acc.value)" [value]="app.appointement.id"
+                          class="btn btn-danger mx-3">Decline</button>
+                      </ng-container> -->
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+
+
+                <!-- <div *ngFor="let app of comingAppoint ;let i=index" class="col-md-3 py-4 d-flex justify-content-center">
+            <div *ngIf="!IsWait" class="appointReq ">
+              <h4 class=" fw-bolder heading-home"> {{app.patient.name}} </h4>
+              <p class="fw-bold fs-4">{{app.appointement.date | date}}</p>
+              <h6 class="fw-bold"><i class="fa fa-map-marker py-2"></i> {{app.appointement.address}}</h6>
+              <button type="submit" #acc (click)="cancelAppoint(acc.value)" [value]="app.appointement.id"
+                class="btn btn-danger mx-3">Decline</button>
+              <button #rej (click)="acceptAppoint(rej.value)" type="submit" [value]="app.appointement.id"
+                class="btn btn-success">Confirm</button>
+            </div>
+          </div> -->
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- end second Home -->
+    <!-- <div class="container">
+      <div class="row py-5 my-3">
+        <div class="row py-2 my-3">
+          <div class="text-center">
+            <h1 class="headingDocCard py-4 my-3 fw-bolder">Your upcoming appointments</h1>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div> -->
+
+</section>

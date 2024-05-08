@@ -1,0 +1,82 @@
+<!-- start doctorCard -->
+<div class="m-auto">
+  <mat-progress-spinner class="m-auto" mode="indeterminate" *ngIf="IsWait">
+  </mat-progress-spinner>
+</div>
+<div *ngIf="!IsWait" class="container">
+  <div  class="row my-5 py-4">
+
+      <div  class="col-md-10  text-center">
+          <h1 class="doctorJob fw-bolder text-center"> Doctor's Profile </h1>
+      </div>
+      <div class="offset-1 col-md-1">
+          <a name="editProfile" id="editProBtn"(click)="navDoc(docProfileData.doctor.id)" class="btn" role="button"> Edit your profile</a>
+      </div>
+  </div>
+  <div class="row  ">
+    <div class="col-md-6 ">
+      <h4 class="headColor fw-bolder"> Name </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center"> {{docProfileData.doctor.name}} </p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder"> Specialties </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center"> {{docProfileData.speciality.name}} </p>
+      </span>
+    </div>
+    <div class="col-md-6 ">
+      <h4 class="headColor fw-bolder"> E-mail </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center">{{docProfileData.doctor.email}}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder"> Governance </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center">{{docProfileData.doctor.governance}}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder"> Phone Number </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center">{{docProfileData.doctor.phone}}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder"> Address </h4>
+      <span class="bg-light">
+        <p class="Pinfo text-center">{{docProfileData.doctor.address}}</p>
+      </span>
+    </div>
+  </div>
+
+  </div>
+  <!-- end doctorCard -->
+
+
+
+
+<!-- start secondHome -->
+<div class="container">
+  <hr>
+  <div class="row py-5 my-3">
+      <div class="row py-2 my-3">
+          <div class="text-center">
+              <h1 class="doctorJob fw-bolder">Your upcoming appointments</h1>
+          </div>
+      </div>
+      <div *ngFor="let cApp of comingAppoint" class="col-md-3 py-4">
+          <div class="card text-center fs-4 w-75 ">
+              <img src="assets/home/appoint.png" class="card-img-top w-100" alt="doc1">
+              <div class="card-body">
+                  <h4 class="card-title fw-bolder">{{cApp.patient.name}}</h4>
+                  <h5>{{cApp.appointement.date | date}}</h5>
+                  <h6 class="fw-bolde"><i class="fa fa-map-marker py-2"></i> {{cApp.patient.address}}</h6>
+                   <!-- <button (click)=" openPatientProfile(pID.value)" #pID [value]="cApp?.userId?._id"
+                      class="btn btn-primary  fw-bold">See more</button> -->
+                  <!-- {{pID.value}} -->
+              </div>
+          </div>
+      </div>

@@ -1,0 +1,94 @@
+<div class="w-75 mx-auto py-4">
+  <div class="container mt-5 p-5">
+    <div class="card shadow">
+      <div class="mt-5 bg-white text-center" style="color: #1A998E;">
+        <p class="h1"> Login </p>
+        <div *ngIf="apiError.length > 0" class="text-danger mt-3">
+          {{apiError}}
+        </div>
+        <div *ngIf="showAlert == true" class="alert alert-success container ml-5 w-75" role="alert">
+            Login is Successfully.
+        </div>
+      </div>
+
+      <div class="card-body">
+        <!-- (ngSubmit)="handleSignIn(signInForm)" -->
+        <form (submit)="handleSignIn()"  class="m-3 row" [formGroup]="signInForm">
+            <div class="col-md-1"></div>
+
+ 
+
+            <!-- ----------------------- ** Section 1 *** ----------------------- -->
+
+            <div class="col-md-5 mt-5">
+
+              <!-- ----------------------- Email ----------------------- -->
+
+              <div class="mb-3">
+                <label for="email" class="mb-2">Email</label>
+                <input type="email" formControlName="email" id="email" class="form-control" />
+
+                <div *ngIf="signInForm.get('email')?.errors && signInForm.get('email')?.touched" class="text-danger m-1">
+                  <p *ngIf="signInForm.get('email')?.getError('email')" class="m-0">Email is InValid</p>
+                  <p *ngIf="signInForm.get('email')?.getError('required')" class="m-0">Email is Required</p>
+                </div>
+              </div>
+
+              <!-- ----------------------- Password ----------------------- -->
+
+              <div class="mb-3">
+                <label for="password" class="mb-2">Password</label>
+                <div class="input-group">
+                    <div class="input-group">
+                        <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" id="password" class="form-control" />
+                        <span class="input-group-text" (click)="togglePasswordVisibility()">
+                            <i class="{{ showPassword ? 'far fa-eye' : 'far fa-eye-slash' }} text-main"></i>
+                        </span>
+                    </div>
+                </div>
+            
+                <div *ngIf="signInForm.get('password')?.errors && signInForm.get('password')?.touched" class="text-danger m-1">
+                    <p *ngIf="signInForm.get('password')?.getError('minlength')" class="m-0">Password is Invalid</p>
+                    <p *ngIf="signInForm.get('password')?.getError('required')" class="m-0">Password is Required</p>
+                </div>
+            </div>
+
+              <!-- ----------------------- Sign In Button ----------------------- -->
+
+              <div class="text-start m-3">
+                <button type="submit" class="btn btn-info btn-send mt-3 w-50">
+
+
+                  <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+
+                  <span *ngIf="!isLoading">Sign In</span>
+
+                </button>
+              </div>
+
+
+            </div>
+
+
+                <!-- ----------------------- ** Section 2 *** ----------------------- -->
+
+                <div class="col-md-5">
+
+                <!-- ----------------------- Image ----------------------- -->
+    
+                <div class=" m-3 mb-5">
+                    <div class="image-section">
+                    <img src="assets/login/amico.png" alt="Login Image" class="w-80 img-fluid float-end">
+                </div>
+                </div>
+                </div>
+
+            <div class="col-md-1"></div>
+
+          </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
